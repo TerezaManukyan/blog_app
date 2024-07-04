@@ -34,7 +34,7 @@ class LoginController extends Controller
             ]);
         } else {
             $posts = $this->postRepository->getAll('');
-            return view('post.index')->with(['user' => Auth::user(), 'posts' => $posts]);
+            return redirect()->route('posts.index')->with(['user' => Auth::user(), 'posts' => $posts]);
         }
     }
 
