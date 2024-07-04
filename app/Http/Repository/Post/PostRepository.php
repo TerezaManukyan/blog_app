@@ -23,8 +23,8 @@ class PostRepository implements IPostRepository
 
     public function getPostById(int $id)
     {
-        return Cache::rememberForever('post_'. $id, function () use($id) {
-           return Post::with(['comments', 'user'])->where('id', $id)->first();
+        return Cache::rememberForever('post_' . $id, function () use ($id) {
+            return Post::with(['comments', 'user'])->where('id', $id)->first();
         });
     }
 
@@ -47,16 +47,16 @@ class PostRepository implements IPostRepository
 
         $post->load(['user', 'comments']);
 
-        Cache::forget('post_'. $post->id);
+        Cache::forget('post_' . $post->id);
 
-        return Cache::rememberForever('post_'. $post->id, function () use($post) {
+        return Cache::rememberForever('post_' . $post->id, function () use ($post) {
             return $post;
         });
     }
 
     public function delete(Post $post): void
     {
-        Cache::forget('post_'. $post->id);
+        Cache::forget('post_' . $post->id);
 
         $post->delete();
     }

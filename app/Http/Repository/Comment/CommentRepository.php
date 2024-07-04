@@ -5,6 +5,7 @@ namespace App\Http\Repository\Comment;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class CommentRepository implements ICommentRepository
 {
@@ -17,6 +18,12 @@ class CommentRepository implements ICommentRepository
 
         $comment->save();
 
-        return $comment;
+        $post->load(['user', 'comments']);
+
+        Cache::forget('post_' . $post->id);
+
+        return Cache::rememberForever('post_' . $post->id, function () use ($post) {
+            return $post;
+        });
     }
 }
