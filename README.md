@@ -37,18 +37,18 @@ This is a simple blog application built with Laravel. It includes a commenting s
 
 4. Install PHP dependencies:
     ```bash
-    docker-compose exec app composer install
+    docker-compose exec php-fpm composer install
     ```
 
 5. Generate an application key:
     ```bash
-    docker-compose exec app php artisan key:generate
+    docker-compose exec php-fpm php artisan key:generate
     ```
 6. Run migrations:
     ```bash
-    docker-compose exec app php artisan migrate
+    docker-compose exec php-fpm php artisan migrate
     ```
-   
+
 ## Usage
 
 ### Creating Blog Posts
