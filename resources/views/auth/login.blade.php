@@ -25,7 +25,7 @@
 
             <div style="margin-bottom: 15px;">
                 <label for="email" style="font-weight: bold;">Email</label>
-                <input id="email" type="email" name="email" value="{{ old('email') }}"  autofocus style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+                <input id="email" type="text" name="email" value="{{ old('email') }}"  autofocus style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
             </div>
 
             <div style="margin-bottom: 15px;">
